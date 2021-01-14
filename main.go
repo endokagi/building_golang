@@ -24,6 +24,9 @@ func main() {
 	router.HandleFunc("/data", controllers.Getdata).Methods("GET")
 	router.HandleFunc("/db", controllers.GetDB).Methods("GET")
 
-	var port = os.Getenv("port")
+	port := os.Getenv("port")
+	if port == "" {
+		port = "9000" // Default port if not specified
+	}
 	http.ListenAndServe(":"+port, router)
 }
