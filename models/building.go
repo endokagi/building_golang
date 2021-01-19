@@ -14,9 +14,9 @@ type EstimateIncome struct {
 	ID   primitive.ObjectID `json:"_id, omitempty" bson:"_id, omitempty"`
 	Bid  string             `json:"bid, omitempty" bson:"bid, omitempty"`
 	Area []struct {
-		ID    primitive.ObjectID `json:"_id, omitempty" bson:"_id, omitempty"`
-		Title string             `json:"title, omitempty" bson:"title, omitempty"`
-		Value int                `json:"value, omitempty" bson:"value, omitempty"`
+		AreaID primitive.ObjectID `json:"area_id, omitempty" bson:"area_id, omitempty"`
+		Title  string             `json:"title, omitempty" bson:"title, omitempty"`
+		Value  int                `json:"value, omitempty" bson:"value, omitempty"`
 	}
 }
 
@@ -101,14 +101,12 @@ type CorporateIncomeTax struct {
 // /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 type Building struct {
-	ID    primitive.ObjectID `json:"_id, omitempty" bson:"_id, omitempty"`
-	Bid   string             `json:"bid, omitempty" bson:"bid, omitempty"`
-	BName string             `json:"bname, omitempty" bson:"bname, omitempty"`
+	Bid   string `json:"bid, omitempty" bson:"bid, omitempty"`
+	BName string `json:"bname, omitempty" bson:"bname, omitempty"`
 
 	Area []struct {
-		ID    primitive.ObjectID `json:"_id, omitempty" bson:"_id, omitempty"`
-		Title string             `json:"title, omitempty" bson:"title, omitempty"`
-		Value int                `json:"value, omitempty" bson:"value, omitempty"`
+		Title string `json:"title, omitempty" bson:"title, omitempty"`
+		Value int    `json:"value, omitempty" bson:"value, omitempty"`
 	}
 
 	N_land           int `json:"nland, omitempty" bson:"nland, omitempty"`

@@ -2,8 +2,8 @@ package buildingRepository
 
 import (
 	"context"
+	"encoding/json"
 	"jwt/driver"
-	"jwt/models"
 	"net/http"
 	"os"
 	"time"
@@ -16,129 +16,87 @@ func init() {
 	gotenv.Load()
 }
 
-func InsertBuildingName(res http.ResponseWriter, req *http.Request, bname models.BuildingName) {
+func InsertbuildingData(res http.ResponseWriter, req *http.Request,
+	bname, income, land_cost, cost_of_land, utility_bill, construc_estimate,
+	more_cost_expense, operating_cost, interest_paid, corporate_income bson.M) {
+	json.NewEncoder(res).Encode(bname)
+	json.NewEncoder(res).Encode(income)
+	json.NewEncoder(res).Encode(land_cost)
+	json.NewEncoder(res).Encode(cost_of_land)
+	json.NewEncoder(res).Encode(utility_bill)
+	json.NewEncoder(res).Encode(construc_estimate)
+	json.NewEncoder(res).Encode(more_cost_expense)
+	json.NewEncoder(res).Encode(operating_cost)
+	json.NewEncoder(res).Encode(interest_paid)
+	json.NewEncoder(res).Encode(corporate_income)
+}
+
+func InsertBuildingName(bname bson.M) {
 	var collection = driver.ConnectBuilding()
 	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
 
-	// interest_paid_collection = driver.ConnectColBuilding(os.Getenv("interest_paid_collection"))
-	// corporate_income_tax_collection = driver.ConnectColBuilding(os.Getenv("corporate_income_tax_collection"))
-
-	collection.InsertOne(ctx, bson.M{
-		"_id":   bname.ID,
-		"bid":   bname.Bid,
-		"bname": bname.BName,
-	})
+	collection.InsertOne(ctx, bname)
 }
 
-func InsertEstimateIncome(res http.ResponseWriter, req *http.Request, income models.EstimateIncome, data []interface{}) {
+func InsertEstimateIncome(income bson.M) {
 	var collection = driver.ConnectColBuilding(os.Getenv("estimate_income_collection"))
 	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
 
-	collection.InsertOne(ctx, bson.M{
-		"_id":  income.ID,
-		"bid":  income.Bid,
-		"area": data,
-	})
+	collection.InsertOne(ctx, income)
 }
 
-func InsertLandCost(res http.ResponseWriter, req *http.Request, land_cost models.LandCost) {
+func InsertLandCost(land_cost bson.M) {
+	var collection = driver.ConnectColBuilding(os.Getenv("land_cost_collection"))
+	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
+
+	collection.InsertOne(ctx, land_cost)
+}
+
+func InsertCostOfLand(cost_of_land bson.M) {
 	var collection = driver.ConnectColBuilding(os.Getenv("cost_of_land_collection"))
 	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
 
-	collection.InsertOne(ctx, bson.M{
-		"_id":             land_cost.ID,
-		"bid":             land_cost.Bid,
-		"title":           land_cost.Title,
-		"nland":           land_cost.N_land,
-		"nPerLand":        land_cost.N_Perland,
-		"tranferLandCost": land_cost.TransterLandCost,
-	})
+	collection.InsertOne(ctx, cost_of_land)
 }
 
-func InsertCostOfLand(res http.ResponseWriter, req *http.Request, cost_of_land models.CostOfLand) {
-	var collection = driver.ConnectColBuilding(os.Getenv("estimate_income_collection"))
-	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
-
-	collection.InsertOne(ctx, bson.M{
-		"_id":        cost_of_land.ID,
-		"bid":        cost_of_land.Bid,
-		"title":      cost_of_land.Title,
-		"costOfLand": cost_of_land.CostOfLand,
-	})
-}
-
-func InsertUtilityBill(res http.ResponseWriter, req *http.Request, utility_bill models.UtilityBill, data []interface{}) {
+func InsertUtilityBill(utility_bill bson.M) {
 	var collection = driver.ConnectColBuilding(os.Getenv("utility_bill_collection"))
 	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
 
-	collection.InsertOne(ctx, bson.M{
-		"_id":         utility_bill.ID,
-		"bid":         utility_bill.Bid,
-		"title":       utility_bill.Title,
-		"utilityBill": data,
-	})
+	collection.InsertOne(ctx, utility_bill)
 }
 
-func InsertConstrucEstimate(res http.ResponseWriter, req *http.Request, construc_estimate models.ConstrucEstimate) {
+func InsertConstrucEstimate(construc_estimate bson.M) {
 	var collection = driver.ConnectColBuilding(os.Getenv("construction_cost_estimate_collection"))
 	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
 
-	collection.InsertOne(ctx, bson.M{
-		"_id":              construc_estimate.ID,
-		"bid":              construc_estimate.Bid,
-		"title":            construc_estimate.Title,
-		"nBuildingArea":    construc_estimate.N_BuildingArea,
-		"nPerBuildingArea": construc_estimate.N_PerBuildingArea,
-	})
+	collection.InsertOne(ctx, construc_estimate)
 }
 
-func InsertMoreCostExpense(res http.ResponseWriter, req *http.Request, more_cost_expense models.MoreCostExpense, data []interface{}) {
+func InsertMoreCostExpense(more_cost_expense bson.M) {
 	var collection = driver.ConnectColBuilding(os.Getenv("more_cost_expense_collection"))
 	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
 
-	collection.InsertOne(ctx, bson.M{
-		"_id":                  more_cost_expense.ID,
-		"bid":                  more_cost_expense.Bid,
-		"title":                more_cost_expense.Title,
-		"ownershipTransferFee": more_cost_expense.OwnershipTransferFee,
-		"moreCostExpense":      data,
-	})
+	collection.InsertOne(ctx, more_cost_expense)
 }
 
-func InsertOperatingCost(res http.ResponseWriter, req *http.Request, operating_cost models.OperatingCost, data []interface{}) {
+func InsertOperatingCost(operating_cost bson.M) {
 	var collection = driver.ConnectColBuilding(os.Getenv("operating_cost_collection"))
 	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
 
-	collection.InsertOne(ctx, bson.M{
-		"_id":               operating_cost.ID,
-		"bid":               operating_cost.Bid,
-		"title":             operating_cost.Title,
-		"commission":        operating_cost.Commission,
-		"creditUsageFee":    operating_cost.CreditUsageFee,
-		"moreOperatingCost": data,
-	})
+	collection.InsertOne(ctx, operating_cost)
 }
 
-func InsertInterestPaid(res http.ResponseWriter, req *http.Request, interest_paid models.InterestPaid) {
-	var collection = driver.ConnectColBuilding(os.Getenv("construction_cost_estimate_collection"))
+func InsertInterestPaid(interest_paid bson.M) {
+	var collection = driver.ConnectColBuilding(os.Getenv("interest_paid_collection"))
 	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
 
-	collection.InsertOne(ctx, bson.M{
-		"_id":          interest_paid.ID,
-		"bid":          interest_paid.Bid,
-		"title":        interest_paid.Title,
-		"interestPaid": interest_paid.InterestPaid,
-	})
+	collection.InsertOne(ctx, interest_paid)
 }
 
-func InsertCorporateIncomeTax(res http.ResponseWriter, req *http.Request, corporate_income models.CorporateIncomeTax) {
-	var collection = driver.ConnectColBuilding(os.Getenv("construction_cost_estimate_collection"))
+func InsertCorporateIncomeTax(corporate_income bson.M) {
+	var collection = driver.ConnectColBuilding(os.Getenv("corporate_income_tax_collection"))
 	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
 
-	collection.InsertOne(ctx, bson.M{
-		"_id":                corporate_income.ID,
-		"bid":                corporate_income.Bid,
-		"title":              corporate_income.Title,
-		"corporateIncomeTax": corporate_income.CorporateIncomeTax,
-	})
+	collection.InsertOne(ctx, corporate_income)
 }
