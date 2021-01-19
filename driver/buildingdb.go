@@ -30,7 +30,7 @@ func ConnectBuilding() *mongo.Collection {
 	return collection
 }
 
-func ConnectSomeBuilding(col string) *mongo.Collection {
+func ConnectColBuilding(col string) *mongo.Collection {
 	clientOptions := options.Client().ApplyURI(os.Getenv("building_db"))
 	client, err := mongo.Connect(context.TODO(), clientOptions)
 

@@ -21,6 +21,7 @@ func main() {
 	router.HandleFunc("/logout", controllers.Logout(controllers.GetLogout)).Methods("POST")
 
 	router.HandleFunc("/", controllers.Getdata).Methods("GET")
+	router.HandleFunc("/w", controllers.GetJSON).Methods("GET")
 	router.HandleFunc("/id", controllers.GetBuildingID).Methods("POST")
 
 	port := os.Getenv("port")
