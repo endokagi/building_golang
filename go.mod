@@ -13,6 +13,7 @@ require (
 	github.com/zhgo/console v0.0.0-20150817103316-22d59bcbd28e // indirect
 	go.mongodb.org/mongo-driver v1.4.4
 	google.golang.org/genproto v0.0.0-20210106152847-07624b53cd92 // indirect
+	gopkg.in/mgo.v2 v2.0.0-20190816093944-a6b53ec6cb22
 	gopkg.in/paytm/grace.v1 v1.0.0-20150417064046-edb50d497280
 	gopkg.in/tylerb/graceful.v1 v1.2.15 // indirect
 )

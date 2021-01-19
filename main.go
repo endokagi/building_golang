@@ -20,13 +20,9 @@ func main() {
 	router.HandleFunc("/profile", controllers.TokenVerify(controllers.GetProfile)).Methods("GET")
 	router.HandleFunc("/logout", controllers.Logout(controllers.GetLogout)).Methods("POST")
 
-	router.HandleFunc("/", controllers.GetJSON).Methods("GET")
-	router.HandleFunc("/data", controllers.Getdata).Methods("GET")
-	router.HandleFunc("/db", controllers.GetDB).Methods("GET")
+	router.HandleFunc("/", controllers.Getdata).Methods("GET")
+	router.HandleFunc("/id", controllers.GetBuildingID).Methods("POST")
 
 	port := os.Getenv("port")
-	if port == "" {
-		port = "9000" // Default port if not specified
-	}
 	http.ListenAndServe(":"+port, router)
 }

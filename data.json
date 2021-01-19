@@ -1,8 +1,15 @@
 {
     "bid": "1234",
     "bname": "G1",
-    "area1": 14000,
-    "area2": 120000,
+    "area": [
+        {
+            "title":"area1",
+            "value": 12000
+        },{
+            "title":"area2",
+            "value": 140000
+        }
+    ],
     "nland": 15,
     "nPerLand": 35000000,
     "tranferLandCost": 6,

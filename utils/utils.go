@@ -1,7 +1,6 @@
 package utils
 
 import (
-	"context"
 	"jwt/models"
 	"os"
 
@@ -10,9 +9,6 @@ import (
 	jwt "github.com/dgrijalva/jwt-go"
 	"github.com/subosito/gotenv"
 	"github.com/twinj/uuid"
-	"go.mongodb.org/mongo-driver/bson"
-	"go.mongodb.org/mongo-driver/bson/primitive"
-	"go.mongodb.org/mongo-driver/mongo"
 )
 
 func init() {
@@ -71,23 +67,4 @@ func VertifyEmail(token string, secret string) (string, string) {
 		}
 	}
 	return email, pass
-}
-
-func SetLookup(collection *mongo.Collection, from string, field string) []primitive.M {
-
-	var path = "$" + from
-	lookupStage := bson.D{{"$lookup", bson.D{{"from", from}, {"localField", field}, {"foreignField", field}, {"as", from}}}}
-	unwindStage := bson.D{{"$unwind", bson.D{{"path", path}, {"preserveNullAndEmptyArrays", false}}}}
-
-	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
-	showLoadedCursor, err := collection.Aggregate(ctx, mongo.Pipeline{lookupStage, unwindStage})
-	if err != nil {
-		panic(err)
-	}
-	var showsLoaded []bson.M
-	if err = showLoadedCursor.All(ctx, &showsLoaded); err != nil {
-		panic(err)
-	}
-
-	return showsLoaded
 }
