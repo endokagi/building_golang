@@ -1,1 +1,1 @@
-web: bin/building_golang
+web: building_golang
