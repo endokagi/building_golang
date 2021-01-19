@@ -72,13 +72,11 @@ func GetBuildingByID(collection *mongo.Collection, id string) interface{} {
 
 	matchStage := bson.D{{"$match", bson.D{{"bid", id}}}}
 
-	// estimate_income := SetBSON("estimate_income", "bid", "bid", "estimate_income")
-
-	// estimate_expenditure := SetBSON("estimate_expenditure", "bid", "bid", "estimate_expenditure")
+	estimate_income := SetBSON("estimate_income", "bid", "bid", "estimate_income")
 
 	land_cost := SetBSON("land_cost", "bid", "bid", "land_cost")
 
-	// cost_of_land := SetBSON("cost_of_land", "bid", "bid", "cost_of_land")
+	cost_of_land := SetBSON("cost_of_land", "bid", "bid", "cost_of_land")
 
 	utility_bill := SetBSON("utility_bill", "bid", "bid", "utility_bill")
 
@@ -88,39 +86,38 @@ func GetBuildingByID(collection *mongo.Collection, id string) interface{} {
 
 	operating_cost := SetBSON("operating_cost", "bid", "bid", "operating_cost")
 
-	// interest_paid := SetBSON("interest_paid", "bid", "bid", "interest_paid")
+	interest_paid := SetBSON("interest_paid", "bid", "bid", "interest_paid")
 
-	// corporate_income_tax := SetBSON("corporate_income_tax", "bid", "bid", "corporate_income_tax")
+	corporate_income_tax := SetBSON("corporate_income_tax", "bid", "bid", "corporate_income_tax")
 
 	project := bson.D{{"$project", bson.M{
-		"_id":   1,
-		"bid":   1,
-		"bname": 1,
-		// "estimate_income": 1,
+		"_id":             1,
+		"bid":             1,
+		"bname":           1,
+		"estimate_income": 1,
 		"estimate_expenditure": bson.A{
 			"$land_cost",
-			// "$cost_of_land",
+			"$cost_of_land",
 			"$utility_bill",
 			"$construction_cost_estimate",
 			"$more_cost_expense",
 			"$operating_cost",
-			// "$interest_paid",
-			// "$corporate_income_tax",
+			"$interest_paid",
+			"$corporate_income_tax",
 		}}}}
 
 	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
 	LoadedCursor, err := collection.Aggregate(ctx, mongo.Pipeline{
 		matchStage,
-		// estimate_income,
-		// estimate_expenditure,
+		estimate_income,
 		land_cost,
-		// cost_of_land,
+		cost_of_land,
 		utility_bill,
 		construction_cost_estimate,
 		more_cost_expense,
 		operating_cost,
-		// interest_paid,
-		// corporate_income_tax,
+		interest_paid,
+		corporate_income_tax,
 		project})
 
 	var Loaded []bson.M
