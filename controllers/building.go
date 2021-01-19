@@ -45,12 +45,10 @@ func GetBuildingID(res http.ResponseWriter, req *http.Request) {
 
 func GetJSON(res http.ResponseWriter, req *http.Request) {
 	var building models.Building
-	fmt.Println("wasddddd")
 	data, err := ioutil.ReadFile("./data.json")
 	if err != nil {
 		fmt.Print(err)
 	}
-	json.NewEncoder(res).Encode("i got data")
 	err = json.Unmarshal(data, &building)
 	if err != nil {
 		fmt.Println("error:", err)

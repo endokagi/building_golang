@@ -106,8 +106,9 @@ type Building struct {
 	BName string             `json:"bname, omitempty" bson:"bname, omitempty"`
 
 	Area []struct {
-		Title string `json:"title, omitempty" bson:"title, omitempty"`
-		Value int    `json:"value, omitempty" bson:"value, omitempty"`
+		ID    primitive.ObjectID `json:"_id, omitempty" bson:"_id, omitempty"`
+		Title string             `json:"title, omitempty" bson:"title, omitempty"`
+		Value int                `json:"value, omitempty" bson:"value, omitempty"`
 	}
 
 	N_land           int `json:"nland, omitempty" bson:"nland, omitempty"`
