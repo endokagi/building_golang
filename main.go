@@ -25,8 +25,5 @@ func main() {
 	router.HandleFunc("/id", controllers.GetBuildingID).Methods("POST")
 
 	port := os.Getenv("PORT")
-	if port == "" {
-		port = "9000" // Default port if not specified
-	}
 	http.ListenAndServe(":"+port, router)
 }

@@ -17,7 +17,7 @@ func init() {
 }
 
 func ConnectBuilding() *mongo.Collection {
-	clientOptions := options.Client().ApplyURI(os.Getenv("building_db"))
+	clientOptions := options.Client().ApplyURI(os.Getenv("BUILDING_DB"))
 	client, err := mongo.Connect(context.TODO(), clientOptions)
 
 	if err != nil {
