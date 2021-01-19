@@ -1,1 +1,0 @@
-web: building_golang

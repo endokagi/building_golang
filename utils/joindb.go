@@ -140,10 +140,3 @@ func SetBSON(from string, localField string, foreignField string, as string) bso
 
 	return bsonD
 }
-
-func SetUnwind(path string) bson.D {
-	setPath := "$" + path
-	unwindStage := bson.D{{"$unwind", bson.D{{"path", setPath}, {"preserveNullAndEmptyArrays", false}}}}
-
-	return unwindStage
-}
