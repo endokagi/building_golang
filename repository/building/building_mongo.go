@@ -1,11 +1,12 @@
 package buildingRepository
 
 import (
+	"bul/driver"
+	"bul/models"
 	"context"
 	"encoding/json"
-	"jwt/driver"
-	"jwt/models"
 	"net/http"
+	"time"
 
 	"github.com/subosito/gotenv"
 	"gopkg.in/mgo.v2/bson"
@@ -15,15 +16,16 @@ func init() {
 	gotenv.Load()
 }
 
-func BuildingID(response http.ResponseWriter, request *http.Request, bname models.BuildingName) (string, models.Error) {
+func BuildingID(res http.ResponseWriter, req *http.Request, bid string) (string, models.Error) {
 	var collection = driver.ConnectBuilding()
-	var building models.BuildingName = bname
+	var building models.BuildingName
+	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
 	var error models.Error
-	err := collection.FindOne(context.TODO(), bson.M{"bid": building.Bid}).Decode(&building)
+	err := collection.FindOne(ctx, bson.M{"bid": bid}).Decode(&building)
 	if err != nil {
-		error.Message = "Invalid Account"
-		response.WriteHeader(http.StatusBadRequest)
-		json.NewEncoder(response).Encode(error)
+		error.Message = "Invalid ID"
+		res.WriteHeader(http.StatusBadRequest)
+		json.NewEncoder(res).Encode(error)
 
 	}
 	return building.Bid, error

@@ -129,12 +129,12 @@ type Building struct {
 	N_BuildingArea    int `json:"nBuildingArea, omitempty" bson:"nBuildingArea, omitempty"`
 	N_PerBuildingArea int `json:"nPerBuildingArea, omitempty" bson:"nPerBuildingArea, omitempty"`
 
-	OwnershipTransferFee int `json:"ownershipTransferFee, omitempty" bson:"ownershipTransferFee, omitempty"`
-	MoreCostExpense      []struct {
+	MoreCostExpense []struct {
 		Title string `json:"title, omitempty" bson:"title, omitempty"`
 		Value int    `json:"value, omitempty" bson:"value, omitempty"`
 		Text  string `json:"text, omitempty" bson:"text, omitempty"`
 	}
+	OwnershipTransferFee int `json:"ownershipTransferFee, omitempty" bson:"ownershipTransferFee, omitempty"`
 
 	Commission        int `json:"commission, omitempty" bson:"commission, omitempty"`
 	CreditUsageFee    int `json:"CreditUsageFee, omitempty" bson:"CreditUsageFee, omitempty"`

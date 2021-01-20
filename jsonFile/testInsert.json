@@ -1,0 +1,91 @@
+{
+    "bid": "0000",
+    "bname": "MOCKING",
+    "construc_estimate": {
+        "nBuildingArea": 0,
+        "nPerBuildingArea": 0
+    },
+    "corperate_income_tax": {
+        "corporateIncomeTax": 0
+    },
+    "cost_of_land": {
+        "costOfLand": 0
+    },
+    "estimate_income": {
+        "Area": [
+            {
+                "title": "area1",
+                "value": 0
+            },
+            {
+                "title": "area2",
+                "value": 0
+            }
+        ]
+    },
+    "interest_paid": {
+        "interestPaid": 0
+    },
+    "land_cost": {
+        "nland": 0,
+        "nPerLand": 0,
+        "tranferLandCost": 0,
+        "MoreLandCost": [
+            {
+                "title": "other",
+                "value": 0,
+                "text": ""
+            }
+        ]
+    },
+    "more_cost_expense": {
+        "ownershipTransferFee": 0,
+        "MoreCostExpense": [
+            {
+                "title": "other",
+                "value": 100000,
+                "text": "ค่ารังวัด"
+            }
+        ]
+    },
+    "operating_cost": {
+        "commission": 0,
+        "CreditUsageFee": 0,
+        "MoreOperatingCost": [
+            {
+                "title": "other",
+                "value": 9000000,
+                "text": "ค่าออกแบบสิ่งก่อสร้าง"
+            }
+        ]
+    },
+    "utility_bill": {
+        "UtilityBill": [
+            {
+                "title": "ระบบไฟฟ้า",
+                "value": 0,
+                "text": ""
+            },
+            {
+                "title": "ระบบประปา",
+                "value": 0,
+                "text": ""
+            },
+            {
+                "title": "ท่อระบายน้ำ",
+                "value": 0,
+                "text": ""
+            },
+            {
+                "title": "ส่วนกลาง",
+                "value": 0,
+                "text": ""
+            },
+            {
+                "title": "other",
+                "value": 0,
+                "text": ""
+            }
+        ]
+    }
+}

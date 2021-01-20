@@ -1,10 +1,11 @@
-module jwt
+module bul
 
 go 1.15
 
 require (
 	github.com/davecgh/go-spew v1.1.1
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible
+	github.com/globalsign/mgo v0.0.0-20181015135952-eeefdecb41b8
 	github.com/gorilla/mux v1.8.0
 	github.com/liudng/dogo v0.0.0-20161102105440-7887b849de84 // indirect
 	github.com/subosito/gotenv v1.2.0

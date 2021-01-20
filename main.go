@@ -1,7 +1,7 @@
 package main
 
 import (
-	"jwt/controllers"
+	"bul/controllers"
 	"net/http"
 	"os"
 
@@ -15,10 +15,6 @@ func init() {
 
 func main() {
 	router := mux.NewRouter()
-	router.HandleFunc("/login", controllers.Login).Methods("POST")
-	router.HandleFunc("/token", controllers.ValidRefresh(controllers.GetNewToken)).Methods("POST")
-	router.HandleFunc("/profile", controllers.TokenVerify(controllers.GetProfile)).Methods("GET")
-	router.HandleFunc("/logout", controllers.Logout(controllers.GetLogout)).Methods("POST")
 
 	router.HandleFunc("/", controllers.Getdata).Methods("GET")
 	router.HandleFunc("/w", controllers.GetJSON).Methods("GET")
