@@ -5,20 +5,17 @@
     "construc_estimate": {
         "_id": "6006dffb898123dffffbb423",
         "bid": "0000",
-        "title": "",
         "nBuildingArea": 0,
         "nPerBuildingArea": 0
     },
     "corperate_income_tax": {
         "_id": "6006dffe898123dffffbb427",
         "bid": "0000",
-        "title": "",
         "corporateIncomeTax": 0
     },
     "cost_of_land": {
         "_id": "6006dffa898123dffffbb421",
         "bid": "0000",
-        "title": "",
         "costOfLand": 0
     },
     "estimate_income": {
@@ -26,13 +23,7 @@
         "bid": "0000",
         "Area": [
             {
-                "area_id": "000000000000000000000000",
                 "title": "area1",
-                "value": 0
-            },
-            {
-                "area_id": "000000000000000000000000",
-                "title": "area2",
                 "value": 0
             }
         ]
@@ -40,19 +31,17 @@
     "interest_paid": {
         "_id": "6006dffd898123dffffbb426",
         "bid": "0000",
-        "title": "",
         "interestPaid": 0
     },
     "land_cost": {
         "_id": "6006e165672cd5e4a1f6c4ba",
         "bid": "0000",
-        "title": "",
         "nland": 0,
         "nPerLand": 0,
         "tranferLandCost": 0,
         "MoreLandCost": [
             {
-                "title": "other",
+                "title": "อื่นๆ",
                 "value": 0,
                 "text": ""
             }
@@ -61,11 +50,10 @@
     "more_cost_expense": {
         "_id": "6006dffc898123dffffbb424",
         "bid": "0000",
-        "title": "",
         "ownershipTransferFee": 0,
         "MoreCostExpense": [
             {
-                "title": "other",
+                "title": "อื่นๆ",
                 "value": 100000,
                 "text": "ค่ารังวัด"
             }
@@ -74,12 +62,11 @@
     "operating_cost": {
         "_id": "6006dffc898123dffffbb425",
         "bid": "0000",
-        "title": "",
         "commission": 0,
         "CreditUsageFee": 0,
         "MoreOperatingCost": [
             {
-                "title": "other",
+                "title": "อื่นๆ",
                 "value": 9000000,
                 "text": "ค่าออกแบบสิ่งก่อสร้าง"
             }
@@ -88,30 +75,16 @@
     "utility_bill": {
         "_id": "6006dffa898123dffffbb422",
         "bid": "0000",
-        "title": "",
+        "title": [
+            "ระบบไฟฟ้า",
+            "ระบบประปา",
+            "ท่อระบายน้ำ",
+            "ส่วนกลาง",
+            "อื่นๆ"
+        ],
         "UtilityBill": [
             {
-                "title": "ระบบไฟฟ้า",
-                "value": 0,
-                "text": ""
-            },
-            {
-                "title": "ระบบประปา",
-                "value": 0,
-                "text": ""
-            },
-            {
-                "title": "ท่อระบายน้ำ",
-                "value": 0,
-                "text": ""
-            },
-            {
-                "title": "ส่วนกลาง",
-                "value": 0,
-                "text": ""
-            },
-            {
-                "title": "other",
+                "title": "",
                 "value": 0,
                 "text": ""
             }
