@@ -1,0 +1,21 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: building-system
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      name: bulsystem
+  template:
+    metadata:
+      labels:
+        name: bulsystem
+    spec:
+      containers:
+      - name: bulsystem
+        image: witthawat0572/building-system
+        imagePullPolicy: IfNotPresent
+        ports:
+          - containerPort: 3000

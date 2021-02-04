@@ -1,0 +1,21 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: building-login
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      name: bullogin
+  template:
+    metadata:
+      labels:
+        name: bullogin
+    spec:
+      containers:
+      - name: bullogin
+        image: witthawat0572/building-login
+        imagePullPolicy: IfNotPresent
+        ports:
+          - containerPort: 3000

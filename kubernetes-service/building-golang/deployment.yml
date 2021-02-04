@@ -1,0 +1,21 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: building-golang
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      name: building-golang
+  template:
+    metadata:
+      labels:
+        name: building-golang
+    spec:
+      containers:
+      - name: application
+        image: witthawat0572/building-golang
+        imagePullPolicy: IfNotPresent
+        ports:
+          - containerPort: 3000
