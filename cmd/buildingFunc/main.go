@@ -6,7 +6,12 @@ import (
 	"os"
 
 	"github.com/gorilla/mux"
+	"github.com/subosito/gotenv"
 )
+
+func init() {
+	gotenv.Load()
+}
 
 func main() {
 	router := mux.NewRouter()
