@@ -1,1 +1,4 @@
-#ทำไปงั้นแหละ เผื่อได้ใช้
+# Golang
+# Docker
+## FROM golang:1.15-alpine3.13 
+# Kubernetes with google cloud platform
