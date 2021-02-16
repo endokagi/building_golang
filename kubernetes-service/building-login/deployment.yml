@@ -7,14 +7,14 @@ spec:
   replicas: 5
   selector:
     matchLabels:
-      name: bullogin
+      name: building-login
   template:
     metadata:
       labels:
-        name: bullogin
+        name: building-login
     spec:
       containers:
-      - name: bullogin
+      - name: application
         image: witthawat0572/building-login
         imagePullPolicy: IfNotPresent
         ports:

@@ -1,0 +1,39 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-docker
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      name: user-docker
+  template:
+    metadata:
+      labels:
+        name: user-docker
+    spec:
+      containers:
+      - name: application
+        image: witthawat0572/user-docker
+        imagePullPolicy: IfNotPresent
+        ports:
+          - containerPort: 3000
+      - name: database
+        image: user-mongo
+        imagePullPolicy: IfNotPresent
+        ports:
+          - containerPort: 3001
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: user-docker-service
+spec:
+  type: LoadBalancer
+  ports:
+  - name: http
+    port: 80
+    targetPort: 3000
+  selector:
+    name: user-docker
