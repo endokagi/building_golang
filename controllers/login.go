@@ -31,3 +31,8 @@ func Login(res http.ResponseWriter, req *http.Request) {
 	}
 
 }
+
+func FindUser(res http.ResponseWriter, req *http.Request) {
+	data := userRepository.Users()
+	json.NewEncoder(res).Encode(data)
+}
