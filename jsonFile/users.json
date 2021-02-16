@@ -1,0 +1,24 @@
+[{
+    "firstname": "DATAFOR",
+    "lastname": "TESTING",
+    "email": "data.testing@wasd.com",
+    "password": "$thisisadatafortestingmongodb" 
+},
+{
+    "firstname": "Robert",
+    "lastname": "Baratheon",
+    "email": "mark_addy@gameofthron.es",
+    "password": "$2b$12$yGqxLG9LZpXA2xVDhuPnSOZd.VURVkz7wgOLY3pnO0s7u2S1ZO32y" 
+},
+{
+    "firstname": "Jaime",
+    "lastname": "Lannister",
+    "email": "nikolaj_coster-waldau@gameofthron.es",
+    "password": "$2b$12$6vz7wiwO.EI5Rilvq1zUc./9480gb1uPtXcahDxIadgyC3PS8XCUK" 
+},
+{
+    "firstname": "Catelyn",
+    "lastname": "Stark",
+    "email": "michelle_fairley@gameofthron.es",
+    "password": "$2b$12$fiaTH5Sh1zKNFX2i/FTEreWGjxoJxvmV7XL.qlfqCr8CwOxK.mZWS" 
+}]
