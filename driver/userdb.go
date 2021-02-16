@@ -28,3 +28,35 @@ func ConnectUser() *mongo.Collection {
 	client.Ping(ctx, readpref.Primary())
 	return collection
 }
+
+func ConnectKubeBuilding() *mongo.Collection {
+	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
+	auth := options.Credential{
+		Username: os.Getenv("KUBE_MONGODB_USERNAME"),
+		Password: os.Getenv("KUBE_MONGODB_PASSWORD"),
+	}
+	clientOptions := options.Client().ApplyURI(os.Getenv("KUBE_MONGODB")).SetAuth(auth)
+	client, err := mongo.Connect(context.TODO(), clientOptions)
+	if err != nil {
+		log.Fatal(err)
+	}
+	collection := client.Database(os.Getenv("KUBE_BUILDING_DATABASE")).Collection(os.Getenv("KUBE_BNAME_COLLECTION"))
+	client.Ping(ctx, readpref.Primary())
+	return collection
+}
+
+func ConnectKubeBuildingUser() *mongo.Collection {
+	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
+	auth := options.Credential{
+		Username: os.Getenv("KUBE_MONGODB_USERNAME"),
+		Password: os.Getenv("KUBE_MONGODB_PASSWORD"),
+	}
+	clientOptions := options.Client().ApplyURI(os.Getenv("KUBE_MONGODB")).SetAuth(auth)
+	client, err := mongo.Connect(context.TODO(), clientOptions)
+	if err != nil {
+		log.Fatal(err)
+	}
+	collection := client.Database(os.Getenv("KUBE_BUILDING_DATABASE")).Collection("users")
+	client.Ping(ctx, readpref.Primary())
+	return collection
+}
