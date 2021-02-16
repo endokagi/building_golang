@@ -21,3 +21,20 @@ func UserID(user models.Login) models.Login {
 	}
 	return user
 }
+
+func Users() []bson.M {
+	var collection = driver.ConnectUser()
+	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
+	cursor, err := collection.Find(ctx, bson.M{})
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer cursor.Close(ctx)
+
+	var users []bson.M
+	if err = cursor.All(ctx, &users); err != nil {
+		log.Fatal(err)
+	}
+
+	return users
+}
